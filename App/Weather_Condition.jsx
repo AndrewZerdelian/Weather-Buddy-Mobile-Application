@@ -4,7 +4,7 @@ import React from "react";
 export default function Weather_Condition() {
   return (
     <View>
-      <Text>Weather_Condition heeloz</Text>
+      <Text>Weather_Condition</Text>
     </View>
   );
 }

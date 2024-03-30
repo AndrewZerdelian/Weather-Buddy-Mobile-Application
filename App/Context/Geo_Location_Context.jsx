@@ -19,7 +19,7 @@ export default function Geo_Location_Context({ children }) {
       console.log(Latitude);
       console.log(Longitude);
     } catch (error) {
-      console.log(error);
+      console.log(error);     
     }
   }
 

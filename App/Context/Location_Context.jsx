@@ -1,13 +1,15 @@
 import { View, Text } from "react-native";
-import React, { createContext } from "react";
+import React, { createContext, useContext, useEffect } from "react";
 import axios from "axios";
+import { GetUserLocation } from "./Geo_Location_Context";
 
 export const SearchByLocation = createContext();
 
 export default function Location_ContextAPI({ children }) {
   const APIKEY = process?.env?.EXPO_PUBLIC_API_KEY;
-  console.log(APIKEY);
-  
+  //console.log(APIKEY);
+  const { Longitude, Latitude } = useContext(GetUserLocation);
+
   async function GetLocationByLongLat() {
     try {
       const response = await axios.get(
@@ -18,9 +20,14 @@ export default function Location_ContextAPI({ children }) {
       console.log(error);
     }
   }
+  useEffect(() => {
+    GetLocationByLongLat();
+  }, [Longitude, Latitude]);
   return (
-    <View>
-      <Text>Location_Context</Text>
-    </View>
+    <SearchByLocation.Provider
+      value={{ Location_ContextAPI, GetLocationByLongLat }}
+    >
+      {children}
+    </SearchByLocation.Provider>
   );
 }
