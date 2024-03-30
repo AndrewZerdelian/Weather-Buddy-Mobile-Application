@@ -1,14 +1,20 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Text, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
+import Weather_Condition from "./App/Weather_Condition";
+import Geo_Location_Context from "./App/Context/Geo_Location_Context";
 
 export default function App() {
+
+
   return (
-    <View className="flex-1 items-center justify-center bg-white ">
-      <Text className="font-bold text-2xl">
-        Open up App.js to start working
-      </Text>
+    <Geo_Location_Context>
+    <SafeAreaView className="flex-1 items-center justify-center bg-white">
+      <View>
+        <Weather_Condition />
+      </View>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
+    </Geo_Location_Context>
   );
 }
