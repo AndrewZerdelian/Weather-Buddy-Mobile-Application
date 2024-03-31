@@ -7,12 +7,13 @@ export default function Search_CityName_Context({ children }) {
   const APIKEY = process?.env?.EXPO_PUBLIC_API_KEY;
   //console.log(APIKEY);
 
+  const City = "cairo";
   async function GetLocationByCityName(City) {
     try {
       const response = await axios.get(
-        `http://api.openweathermap.org/data/2.5/forecast?q=${City}&appid=${APIKEY}&units=metric`
+        `http://api.openweathermap.org/data/2.5/forecast?q=Cairo&appid=${APIKEY}&units=metric`
       );
-      console.log(response);
+      //console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -21,10 +22,10 @@ export default function Search_CityName_Context({ children }) {
     GetLocationByCityName();
   }, [City]);
   return (
-    <SearchByLocation.Provider
+    <SearchByCityName.Provider
       value={{ Search_CityName_Context, GetLocationByCityName }}
     >
       {children}
-    </SearchByLocation.Provider>
+    </SearchByCityName.Provider>
   );
 }
