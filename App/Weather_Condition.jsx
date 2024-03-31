@@ -1,10 +1,11 @@
 import { View, Text } from "react-native";
 import React from "react";
+import CurrentWeather from "./Reusable-Components/CurrentWeather";
 
 export default function Weather_Condition() {
   return (
-    <View>
-      <Text>Weather_Condition</Text>
+    <View >
+      <CurrentWeather/>
     </View>
   );
 }

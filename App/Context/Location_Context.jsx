@@ -4,16 +4,13 @@ import axios from "axios";
 import { GetUserLocation } from "./Geo_Location_Context";
 
 export const SearchByLocation = createContext();
-
+const APIKEY = process?.env?.EXPO_PUBLIC_API_KEY;
 export default function Location_ContextAPI({ children }) {
-  const APIKEY = process?.env?.EXPO_PUBLIC_API_KEY;
-  //console.log(APIKEY);
   const { Longitude, Latitude } = useContext(GetUserLocation);
-
   async function GetLocationByLongLat() {
     try {
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${Latitude}&lon=${Longitude}&appid=${APIKEY}&units=metric`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${Latitude}&lon=${Longitude}&appid=${APIKEY}&units=metric`
       );
       console.log(response);
     } catch (error) {
