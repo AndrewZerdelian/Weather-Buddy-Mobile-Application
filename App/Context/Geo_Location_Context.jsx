@@ -15,9 +15,9 @@ export default function Geo_Location_Context({ children }) {
       const location = await Location.getCurrentPositionAsync();
       setLatitude(location.coords.latitude);
       setLongitude(location.coords.longitude);
-      console.log("FROM CONTEXT GEO LOCATION" + location);
-      console.log(Latitude);
-      console.log(Longitude);
+      //console.log("FROM CONTEXT GEO LOCATION" + location);
+      //console.log(Latitude);
+      //console.log(Longitude);
     } catch (error) {
       console.log(error);     
     }
@@ -25,7 +25,7 @@ export default function Geo_Location_Context({ children }) {
 
   useEffect(() => {
     GetLocation();
-  }, []);
+  }, [Longitude, Latitude]);
   return (
     <GetUserLocation.Provider
       value={{ Geo_Location_Context, GetLocation, Longitude, Latitude }}
