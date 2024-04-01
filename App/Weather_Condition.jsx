@@ -51,8 +51,3 @@ export default function Weather_Condition() {
     </View>
   );
 }
-/**
- * Time={ForcastByLocation?.data?.list?.dt}
-        Weather_Icon={ForcastByLocation?.data?.list[0]?.weather[0]?.icon}
-        Temp={ForcastByLocation?.data?.list[0]?.main?.temp.toFixed(0)}
- */

@@ -21,7 +21,7 @@ export default function WeathersDetails({ TimeIn12Hour, Icon, Temp }) {
   );
 }
 
-/** Horizontal SCROLLING WORKING FINE this option is not a reuble component
+/** Horizontal SCROLLING WORKING FINE this option is not a reusble component
  * 
  * import { View, Text, ScrollView } from "react-native";
 import React, { useContext } from "react";
