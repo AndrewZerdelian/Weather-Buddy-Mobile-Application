@@ -1,13 +1,20 @@
-import { ScrollView, View } from "react-native";
+import { FlatList, ScrollView, View } from "react-native";
 import React, { useContext } from "react";
 import CurrentWeather from "./Reusable-Components/CurrentWeather";
 import { SearchByLocation } from "./Context/Location_Context";
 import WeathersDetails from "./Reusable-Components/WeathersDetails";
+import WeeklyForeCast from "./Reusable-Components/WeeklyForeCast";
 
 export default function Weather_Condition() {
   const { ForcastByLocation } = useContext(SearchByLocation);
-  //console.log(ForcastByLocation?.data);
-
+  //console.log(ForcastByLocation?.data?.list);
+  const dailyForecast = ForcastByLocation?.data?.list?.reduce((acc, item) => { //to arrange the date and time 
+    const date = new Date(item.dt_txt).toDateString();
+    if (!acc.find((i) => new Date(i.dt_txt).toDateString() === date)) {
+      acc.push(item);
+    }
+    return acc;
+  }, []);
   return (
     <View>
       <CurrentWeather
@@ -40,6 +47,7 @@ export default function Weather_Condition() {
             });
             return (
               <WeathersDetails
+                key={items?.dt}
                 TimeIn12Hour={timeIn12Hour}
                 Icon={items?.weather[0]?.icon}
                 Temp={items?.main.temp}
@@ -48,6 +56,76 @@ export default function Weather_Condition() {
           })}
         </ScrollView>
       </View>
+
+      <View className="p-5">
+        <View className=" bg-[#1C1C1E] rounded-xl">
+          {dailyForecast?.map((item) => {
+            const date = new Date(item.dt_txt);
+            const dayOfWeek = [
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+            ][date.getDay()];
+            const dayLabel =
+              date.toDateString() === new Date().toDateString()
+                ? "Today"
+                : dayOfWeek;
+
+            return (
+              <WeeklyForeCast
+                key={item.dt}
+                DayOfTheWeek={dayLabel}
+                Weather_Icon={item.weather[0].icon}
+                temp_max={item.main.temp_max.toFixed(0)}
+                temp_min={item.main.temp_min.toFixed(0)}
+              />
+            );
+          })}
+        </View>
+      </View>
     </View>
   );
 }
+
+/** with js logic before the return
+ * <View className="p-5">
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          data={ForcastByLocation?.data?.list?.slice(0, 6)}
+          keyExtractor={(item) => item.dt}
+          renderItem={({ item }) => {
+            //
+            //                                           HERE BEFORE THE RETURN WE CAN DO JAVASCRIPT LOGIC 
+            return (
+              <WeeklyForeCast
+                DayOfTheWeek={item?.dt_txt}
+                Weather_Icon={item?.weather[0]?.icon}
+                temp_max={item?.main?.temp_max.toFixed(0)}
+                temp_min={item?.main?.temp_min.toFixed(0)}
+              />
+            );
+          }}
+        />
+      </View>
+ * 
+ * 
+ * 
+ * using flatlist without the return and javascript logic before it 
+ * <FlatList
+  showsVerticalScrollIndicator={false}
+  data={ForcastByLocation?.data?.list}
+  keyExtractor={(item) => item.dt}
+  renderItem={({ item }) => (
+    <WeeklyForeCast
+      DayOfTheWeek={item?.dt_txt}
+      Weather_Icon={item?.weather[0]?.icon}
+      temp_max={item?.main?.temp_max.toFixed(0)}
+      temp_min={item?.main?.temp_min.toFixed(0)}
+    />
+  )}
+/>
+ */

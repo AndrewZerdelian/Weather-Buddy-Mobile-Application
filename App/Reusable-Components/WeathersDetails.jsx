@@ -5,7 +5,7 @@ import { SearchByLocation } from "../Context/Location_Context";
 
 export default function WeathersDetails({ TimeIn12Hour, Icon, Temp }) {
   return (
-    <View className="pt-3 ">
+    <View className="pt-3">
       <Text className="text-white font-bold text-center">{TimeIn12Hour}</Text>
       <Image
         source={{
