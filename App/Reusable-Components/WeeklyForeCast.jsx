@@ -9,16 +9,16 @@ export default function WeeklyForeCast({
   temp_min,
 }) {
   const { ForcastByLocation } = useContext(SearchByLocation);
-  console.log(ForcastByLocation?.data);
+  //console.log(ForcastByLocation?.data);
   return (
-    <View className="px-5 flex flex-row items-center justify-around ">
+    <View className="px-5 flex flex-row items-center justify-between ">
       <Text className="text-white font-bold">{DayOfTheWeek}</Text>
       <Image
         source={{
           uri: `https://openweathermap.org/img/wn/${Weather_Icon}@2x.png`,
         }}
         alt="Weather-Icon"
-        style={{ width: 75, height: 75 }}
+        style={{ width: 85, height: 75 }}
       />
       <Text className="text-white font-bold">
         {temp_max}°/{temp_min}°

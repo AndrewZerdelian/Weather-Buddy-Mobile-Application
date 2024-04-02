@@ -4,11 +4,14 @@ import CurrentWeather from "./Reusable-Components/CurrentWeather";
 import { SearchByLocation } from "./Context/Location_Context";
 import WeathersDetails from "./Reusable-Components/WeathersDetails";
 import WeeklyForeCast from "./Reusable-Components/WeeklyForeCast";
+import HightLights from "./Reusable-Components/HightLights";
 
 export default function Weather_Condition() {
   const { ForcastByLocation } = useContext(SearchByLocation);
-  //console.log(ForcastByLocation?.data?.list);
-  const dailyForecast = ForcastByLocation?.data?.list?.reduce((acc, item) => { //to arrange the date and time 
+  console.log(ForcastByLocation);
+
+  const dailyForecast = ForcastByLocation?.data?.list?.reduce((acc, item) => {
+    //to arrange the date and time
     const date = new Date(item.dt_txt).toDateString();
     if (!acc.find((i) => new Date(i.dt_txt).toDateString() === date)) {
       acc.push(item);
@@ -50,7 +53,7 @@ export default function Weather_Condition() {
                 key={items?.dt}
                 TimeIn12Hour={timeIn12Hour}
                 Icon={items?.weather[0]?.icon}
-                Temp={items?.main.temp}
+                Temp={items?.main?.temp}
               />
             );
           })}
@@ -77,16 +80,30 @@ export default function Weather_Condition() {
 
             return (
               <WeeklyForeCast
-                key={item.dt}
+                key={item?.dt}
                 DayOfTheWeek={dayLabel}
-                Weather_Icon={item.weather[0].icon}
-                temp_max={item.main.temp_max.toFixed(0)}
-                temp_min={item.main.temp_min.toFixed(0)}
+                Weather_Icon={item?.weather[0]?.icon}
+                temp_max={item?.main?.temp_max?.toFixed(0)}
+                temp_min={item?.main?.temp_min?.toFixed(0)}
               />
             );
           })}
         </View>
       </View>
+      <HightLights
+        sunrise={new Date(
+          ForcastByLocation?.data?.city?.sunrise * 1000
+        ).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}
+        sunset={new Date(
+          ForcastByLocation?.data?.city?.sunset * 1000
+        ).toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" })}
+        population={ForcastByLocation?.data?.city?.population}
+        humidity={ForcastByLocation?.data?.list[0]?.main?.humidity}
+        visibility={ForcastByLocation?.data?.list[0]?.visibility
+          .toString()
+          .slice(0, 2)}
+        speed={ForcastByLocation?.data?.list[0]?.wind?.speed}
+      />
     </View>
   );
 }
