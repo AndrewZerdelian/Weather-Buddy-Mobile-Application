@@ -11,7 +11,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 const Routes = createBottomTabNavigator();
-
+//Missing Weather Buddy App name
 export default function App() {
   return (
     <Geo_Location_Context>
@@ -30,7 +30,7 @@ export default function App() {
               }}
             >
               <Routes.Screen
-                name="home"
+                name="Home"
                 component={Weather_Condition}
                 options={{
                   headerShown: false,
