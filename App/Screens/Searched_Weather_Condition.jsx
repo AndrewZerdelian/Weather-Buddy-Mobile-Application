@@ -18,12 +18,15 @@ import CurrentWeather from "../Reusable-Components/CurrentWeather";
 import WeathersDetails from "../Reusable-Components/WeathersDetails";
 import WeeklyForeCast from "../Reusable-Components/WeeklyForeCast";
 import HightLights from "../Reusable-Components/HightLights";
+import { SearchByCityName } from "../Context/Search_CityName_Context";
 
 export default function Searched_Weather_Condition() {
   const { ForcastByLocation } = useContext(SearchByLocation); // will be changed on the whole page data
-  console.log(ForcastByLocation);
+  const { setUseFormikInput, ForcastByCity } = useContext(SearchByCityName);
+  console.log(ForcastByCity);
 
-  const dailyForecast = ForcastByLocation?.data?.list?.reduce((acc, item) => {
+  ////////////////////////////ADJUSTING THE STUPID DATE FROM OPEN WEATHER ////////////////////////////////
+  const dailyForecast = ForcastByCity?.data?.list?.reduce((acc, item) => {
     //to arrange the date and time
     const date = new Date(item.dt_txt).toDateString();
     if (!acc.find((i) => new Date(i.dt_txt).toDateString() === date)) {
@@ -31,23 +34,16 @@ export default function Searched_Weather_Condition() {
     }
     return acc;
   }, []);
-  /**
-   * <Button
-                      onPress={handleSubmit}
-                      title="Submit"
-                      color={"#EC6E4C"}
-                      
-                    />
-   */
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
     <SafeAreaView className="bg-[#111013] h-full">
       <ScrollView>
         <Formik
           initialValues={{ CityName: "" }}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => setUseFormikInput(values)}
         >
           {({ handleChange, handleBlur, handleSubmit, values }) => (
-            <View className="p-5">
+            <View className="pt-5 px-5">
               <TextInput
                 onChangeText={handleChange("CityName")}
                 onBlur={handleBlur("CityName")}
@@ -74,22 +70,18 @@ export default function Searched_Weather_Condition() {
           <View>
             <CurrentWeather
               Current_Weather={"Current Weather"}
-              name={ForcastByLocation?.data?.city?.name}
-              country={ForcastByLocation?.data?.city?.country}
-              temp={ForcastByLocation?.data?.list[0]?.main?.temp.toFixed(0)}
+              name={ForcastByCity?.data?.city?.name}
+              country={ForcastByCity?.data?.city?.country}
+              temp={ForcastByCity?.data?.list[0]?.main?.temp.toFixed(0)}
               Weather_Description={
-                ForcastByLocation?.data?.list[0]?.weather[0]?.description
+                ForcastByCity?.data?.list[0]?.weather[0]?.description
               }
-              Weather_Icon={ForcastByLocation?.data?.list[0]?.weather[0]?.icon}
-              feels_like={ForcastByLocation?.data?.list[0]?.main?.feels_like.toFixed(
+              Weather_Icon={ForcastByCity?.data?.list[0]?.weather[0]?.icon}
+              feels_like={ForcastByCity?.data?.list[0]?.main?.feels_like.toFixed(
                 0
               )}
-              temp_max={ForcastByLocation?.data?.list[0]?.main?.temp_max.toFixed(
-                0
-              )}
-              temp_min={ForcastByLocation?.data?.list[0]?.main?.temp_min.toFixed(
-                0
-              )}
+              temp_max={ForcastByCity?.data?.list[0]?.main?.temp_max.toFixed(0)}
+              temp_min={ForcastByCity?.data?.list[0]?.main?.temp_min.toFixed(0)}
             />
             <View className="p-5">
               <ScrollView
@@ -97,7 +89,7 @@ export default function Searched_Weather_Condition() {
                 showsHorizontalScrollIndicator={false}
                 className="py-5 bg-[#1C1C1E] rounded-2xl"
               >
-                {ForcastByLocation?.data?.list?.slice(0, 10)?.map((items) => {
+                {ForcastByCity?.data?.list?.slice(0, 10)?.map((items) => {
                   // Convert the 24-hour format to 12-hour format
                   const date = new Date(items.dt_txt);
                   const timeIn12Hour = date.toLocaleTimeString("en-US", {
@@ -148,23 +140,23 @@ export default function Searched_Weather_Condition() {
             </View>
             <HightLights
               sunrise={new Date(
-                ForcastByLocation?.data?.city?.sunrise * 1000
+                ForcastByCity?.data?.city?.sunrise * 1000
               ).toLocaleTimeString("en-US", {
                 hour: "2-digit",
                 minute: "2-digit",
               })}
               sunset={new Date(
-                ForcastByLocation?.data?.city?.sunset * 1000
+                ForcastByCity?.data?.city?.sunset * 1000
               ).toLocaleTimeString("en-US", {
                 hour: "2-digit",
                 minute: "2-digit",
               })}
-              population={ForcastByLocation?.data?.city?.population}
-              humidity={ForcastByLocation?.data?.list[0]?.main?.humidity}
-              visibility={ForcastByLocation?.data?.list[0]?.visibility
+              population={ForcastByCity?.data?.city?.population}
+              humidity={ForcastByCity?.data?.list[0]?.main?.humidity}
+              visibility={ForcastByCity?.data?.list[0]?.visibility
                 .toString()
                 .slice(0, 2)}
-              speed={ForcastByLocation?.data?.list[0]?.wind?.speed}
+              speed={ForcastByCity?.data?.list[0]?.wind?.speed}
             />
           </View>
         </TouchableWithoutFeedback>
