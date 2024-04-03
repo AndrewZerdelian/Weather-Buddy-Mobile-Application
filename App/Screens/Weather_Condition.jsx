@@ -1,4 +1,10 @@
-import { FlatList, SafeAreaView, ScrollView, View } from "react-native";
+import {
+  FlatList,
+  SafeAreaView,
+  ScrollView,
+  StatusBar,
+  View,
+} from "react-native";
 import React, { useContext } from "react";
 import CurrentWeather from "../Reusable-Components/CurrentWeather";
 import { SearchByLocation } from "../Context/Location_Context";
@@ -106,6 +112,7 @@ export default function Weather_Condition() {
           speed={ForcastByLocation?.data?.list[0]?.wind?.speed}
         />
       </ScrollView>
+      <StatusBar style="auto" />
     </SafeAreaView>
   );
 }
