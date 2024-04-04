@@ -3,13 +3,13 @@
     "name": "weather-buddy-react-native",
     "slug": "weather-buddy-react-native",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "orientation": "Weather Buddy app is basically the app version of the web version on my github",
+    "icon": "./assets/Weather-Buddy-Logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Weather-Buddy-Logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#111013"
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
