@@ -19,7 +19,8 @@ import WeathersDetails from "../Reusable-Components/WeathersDetails";
 import WeeklyForeCast from "../Reusable-Components/WeeklyForeCast";
 import HightLights from "../Reusable-Components/HightLights";
 import { SearchByCityName } from "../Context/Search_CityName_Context";
-
+import { FontAwesome5 } from "@expo/vector-icons";
+ 
 export default function Searched_Weather_Condition() {
   const { ForcastByLocation } = useContext(SearchByLocation); // will be changed on the whole page data
   const { setUseFormikInput, ForcastByCity } = useContext(SearchByCityName);
@@ -38,6 +39,12 @@ export default function Searched_Weather_Condition() {
   return (
     <SafeAreaView className="bg-[#111013] h-full">
       <ScrollView>
+        <View className="flex flex-row items-end gap-5">
+          <Text className="text-white text-xl font-bold pl-5 pt-3">
+            Weather Buddy
+          </Text>
+          <FontAwesome5 name="cloud-sun" size={24} color="white" />
+        </View>
         <Formik
           initialValues={{ CityName: "" }}
           onSubmit={(values) => setUseFormikInput(values)}

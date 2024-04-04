@@ -11,7 +11,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 const Routes = createBottomTabNavigator();
-//Missing Weather Buddy App name
+// 2nd missing searched hestory for city names
+// fix the icons gapping and padding / marginigns
+// 3rd missing getting the days data
 export default function App() {
   return (
     <Geo_Location_Context>

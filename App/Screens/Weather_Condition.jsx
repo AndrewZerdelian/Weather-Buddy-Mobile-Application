@@ -4,6 +4,7 @@ import {
   ScrollView,
   StatusBar,
   View,
+  Text,
 } from "react-native";
 import React, { useContext } from "react";
 import CurrentWeather from "../Reusable-Components/CurrentWeather";
@@ -11,6 +12,7 @@ import { SearchByLocation } from "../Context/Location_Context";
 import WeathersDetails from "../Reusable-Components/WeathersDetails";
 import WeeklyForeCast from "../Reusable-Components/WeeklyForeCast";
 import HightLights from "../Reusable-Components/HightLights";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 export default function Weather_Condition() {
   const { ForcastByLocation } = useContext(SearchByLocation);
@@ -27,6 +29,12 @@ export default function Weather_Condition() {
   return (
     <SafeAreaView>
       <ScrollView className="bg-[#111013]">
+        <View className="flex flex-row items-end gap-5">
+          <Text className="text-white text-xl font-bold pl-5 pt-3">
+            Weather Buddy
+          </Text>
+          <FontAwesome5 name="cloud-sun" size={24} color="white" />
+        </View>
         <CurrentWeather
           Current_Weather={"Current Weather"}
           name={ForcastByLocation?.data?.city?.name}
