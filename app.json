@@ -3,7 +3,7 @@
     "name": "Weather Buddy",
     "slug": "weather-buddy-react-native-expo",
     "version": "1.0.0",
-    "orientation": "Weather Buddy app is basically the app version of the web version on my github",
+    "orientation": "ALL",
     "icon": "./assets/Weather-Buddy-Logo.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#111013"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
@@ -25,9 +23,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": [
-        "ACCESS_FINE_LOCATION"
-      ]
+      "permissions": ["ACCESS_FINE_LOCATION"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
