@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "weather-buddy-react-native",
-    "slug": "weather-buddy",
+    "name": "Weather Buddy",
+    "slug": "weather-buddy-react-native-expo",
     "version": "1.0.0",
     "orientation": "Weather Buddy app is basically the app version of the web version on my github",
     "icon": "./assets/Weather-Buddy-Logo.png",
@@ -34,9 +34,15 @@
     },
     "extra": {
       "eas": {
-        "projectId": "222678db-8acc-4f8e-82d8-8522ce514c44"
+        "projectId": "666de1c2-aabb-4bd5-929f-caad76443dd0"
       }
     },
-    "owner": "andrew_zerdelian"
+    "owner": "andrew_zerdelian",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/666de1c2-aabb-4bd5-929f-caad76443dd0"
+    }
   }
 }
