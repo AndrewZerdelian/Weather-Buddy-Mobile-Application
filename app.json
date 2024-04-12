@@ -3,7 +3,7 @@
     "name": "Weather Buddy",
     "slug": "weather-buddy-react-native-expo",
     "version": "1.0.0",
-    "orientation": "ALL",
+    "orientation": "portrait",
     "icon": "./assets/Weather-Buddy-Logo.png",
     "userInterfaceStyle": "light",
     "splash": {
