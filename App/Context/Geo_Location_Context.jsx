@@ -16,8 +16,8 @@ export default function Geo_Location_Context({ children }) {
       setLatitude(location.coords.latitude);
       setLongitude(location.coords.longitude);
       //console.log("FROM CONTEXT GEO LOCATION" + location);
-      //console.log(Latitude);
-      //console.log(Longitude);
+      console.log(Latitude);
+      console.log(Longitude);
     } catch (error) {
       console.log(error);     
     }
