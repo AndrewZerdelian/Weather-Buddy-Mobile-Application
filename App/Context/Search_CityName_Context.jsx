@@ -4,7 +4,8 @@ import axios from "axios";
 export const SearchByCityName = createContext();
 
 export default function Search_CityName_Context({ children }) {
-  const APIKEY = process?.env?.EXPO_PUBLIC_API_KEY;
+  //const APIKEY = process?.env?.EXPO_PUBLIC_API_KEY;
+  const APIKEY = "5b4d62e08c9c6ec649fed20e88108cde";
   const [UseFormikInput, setUseFormikInput] = useState("");
   const [ForcastByCity, setForcastByCity] = useState({});
   async function GetLocationByCityName(UseFormikInput) {

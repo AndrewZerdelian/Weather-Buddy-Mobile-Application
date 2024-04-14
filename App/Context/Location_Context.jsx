@@ -3,7 +3,8 @@ import axios from "axios";
 import { GetUserLocation } from "./Geo_Location_Context";
 
 export const SearchByLocation = createContext();
-const APIKEY = process?.env?.EXPO_PUBLIC_API_KEY;
+//const APIKEY = process?.env?.EXPO_PUBLIC_API_KEY;
+const APIKEY = "5b4d62e08c9c6ec649fed20e88108cde";
 export default function Location_ContextAPI({ children }) {
   const { Longitude, Latitude } = useContext(GetUserLocation);
   const [ForcastByLocation, setForcastByLocation] = useState({});
