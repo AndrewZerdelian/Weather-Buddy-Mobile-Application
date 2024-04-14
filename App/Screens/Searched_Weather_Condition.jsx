@@ -74,7 +74,7 @@ export default function Searched_Weather_Condition() {
           )}
         </Formik>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-          <View>
+          <ScrollView>
             <CurrentWeather
               Current_Weather={"Current Weather"}
               name={ForcastByCity?.data?.city?.name}
@@ -165,7 +165,7 @@ export default function Searched_Weather_Condition() {
                 .slice(0, 2)}
               speed={ForcastByCity?.data?.list[0]?.wind?.speed}
             />
-          </View>
+          </ScrollView>
         </TouchableWithoutFeedback>
       </ScrollView>
       <StatusBar style="auto" />
