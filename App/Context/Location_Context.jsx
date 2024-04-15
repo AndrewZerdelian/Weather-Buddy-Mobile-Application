@@ -13,7 +13,7 @@ export default function Location_ContextAPI({ children }) {
       const response = await axios.get(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${Latitude}&lon=${Longitude}&appid=${APIKEY}&units=metric`
       );
-      console.log(response);
+      //console.log(response);
       setForcastByLocation(response);
     } catch (error) {
       console.log(error);

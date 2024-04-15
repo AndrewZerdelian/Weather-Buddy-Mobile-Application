@@ -20,11 +20,11 @@ import WeeklyForeCast from "../Reusable-Components/WeeklyForeCast";
 import HightLights from "../Reusable-Components/HightLights";
 import { SearchByCityName } from "../Context/Search_CityName_Context";
 import { FontAwesome5 } from "@expo/vector-icons";
- 
+
 export default function Searched_Weather_Condition() {
   const { ForcastByLocation } = useContext(SearchByLocation); // will be changed on the whole page data
   const { setUseFormikInput, ForcastByCity } = useContext(SearchByCityName);
-  console.log(ForcastByCity);
+  //console.log(ForcastByCity);
 
   ////////////////////////////ADJUSTING THE STUPID DATE FROM OPEN WEATHER ////////////////////////////////
   const dailyForecast = ForcastByCity?.data?.list?.reduce((acc, item) => {
