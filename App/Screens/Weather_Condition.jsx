@@ -16,7 +16,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 
 export default function Weather_Condition() {
   const { ForcastByLocation } = useContext(SearchByLocation);
-  console.log(ForcastByLocation);
+  //console.log(ForcastByLocation);
 
   const dailyForecast = ForcastByLocation?.data?.list?.reduce((acc, item) => {
     //to arrange the date and time

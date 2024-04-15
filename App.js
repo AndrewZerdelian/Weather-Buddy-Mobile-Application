@@ -10,6 +10,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 //import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import Searched_City_History from "./App/Screens/Searched_City_History";
 const Routes = createBottomTabNavigator();
 // 2nd missing searched hestory for city names
 // fix the icons gapping and padding / marginigns
@@ -48,6 +49,16 @@ export default function App() {
                   headerShown: false,
                   tabBarIcon: ({ color, size }) => (
                     <FontAwesome name="search" size={24} color="white" />
+                  ),
+                }}
+              />
+              <Routes.Screen
+                name="History"
+                component={Searched_City_History}
+                options={{
+                  headerShown: false,
+                  tabBarIcon: ({ color, size }) => (
+                    <FontAwesome5 name="history" size={24} color="white" />
                   ),
                 }}
               />
